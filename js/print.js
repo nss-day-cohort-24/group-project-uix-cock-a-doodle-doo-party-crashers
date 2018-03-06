@@ -27,5 +27,23 @@ function printNews(div){
    }
     
 
+//    printMeetups();
 
-   
+function getMeetups () {
+    return $.ajax({
+        url: `https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public&page=20&key=172e1f759224d522749271d19632264`
+    }).done((meetupdata) => {
+        return meetupdata;
+    });
+}
+
+function printMeetups (div){
+    getMeetups()
+    .then((meetupdata) => {
+        let event = meetupdata.events;
+        for (let i = 0; i < event.length; i++) {
+            console.log("event name", event[i].name);
+            $('#print').append(`<li class="meetupevent"><h2>${event[i].name}</h2></li>`);
+        }
+    });
+}
