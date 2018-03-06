@@ -1,6 +1,7 @@
 "use strict";
 
-let $ = require('../lib/node_modules/jquery');
+let $ = require('jquery');
+let moment = require('moment');
 let articlesArray = [];
 
 
@@ -31,6 +32,8 @@ function printNews(div){
           
 // ====WeatherAPI Start===========================================================
 
+
+
 function weatherAPI(file) {
     return $.ajax({
         url: file
@@ -55,8 +58,15 @@ console.log(data);
     let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
     let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON. 
 
+
+console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+    let dateAndTime = moment().format('MMMM Do YYYY');
+
+
+
     let weatherDiv = document.getElementById("weather");
-    weatherDiv.innerHTML = `<section id="todaysDate">${today}</section>`;
+    weatherDiv.innerHTML = `<section id="todaysDate">Today is ${dateAndTime}</section>`;
     weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`;
     weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`;
     weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
