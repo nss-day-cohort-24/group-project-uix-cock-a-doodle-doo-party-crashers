@@ -27,9 +27,7 @@ function printNews(div){
     }
 });
 }
-   printMeetups();
-
-          
+         
 // ====WeatherAPI Start===========================================================
 
 function weatherAPI(file) {
@@ -102,6 +100,6 @@ function printBooks(div){
    }
 printBooks();
 
-module.exports = {getBooks, printBooks};
+module.exports = {printNews, printMeetups, getBooks, printBooks};
 
    
