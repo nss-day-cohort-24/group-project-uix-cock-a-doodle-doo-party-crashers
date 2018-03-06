@@ -17,7 +17,9 @@ h1 {
 }
 
 #todaysCurrentTemp {
-    size: 120px;
+    font-size: 10em;
+    font-weight: 600;
+    margin: 15% 0 0 49%;
 }
 
 h2 {
@@ -99,6 +101,20 @@ nav {
         color: $tan;
         text-decoration: none;
     }
+}
+
+#weather {
+    width: 40vw;
+    height: 45vh;
+    background-color: $orange;
+    color: $tan;
+    font-family: helvetica;
+}
+
+#main {
+    width: 40vw;
+    margin: 0;
+    border: 1px solid hotpink;   
 }
 
 .apis {
