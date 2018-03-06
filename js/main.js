@@ -1,8 +1,6 @@
 "use strict";
 
-let weatherAPI = require("./weather-api");
+require("./weather-api");
+require("./print");
 
-console.log("did it work?");
-
-// console.log(weatherAPI.testReturn());
 
