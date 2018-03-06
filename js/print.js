@@ -2,8 +2,9 @@
 
 let $ = require('../lib/node_modules/jquery');
 let articlesArray = [];
-
-
+let counter = 0;
+let fetchModule = require("./fetch");
+let getBooks = fetchModule.getBooks;
 
 printNews();
  
@@ -85,30 +86,20 @@ function printMeetups (div){
         }
     });
 }
-function getBooks() {
-    var searchBooks = "harry potter"; // Will be input.value
-    return $.ajax({
-        url: `http://openlibrary.org/search.json?q=${searchBooks}`,
-    }).done((booksData) => {
-        // console.log("books Data call", booksData);
-        let books = JSON.parse(booksData);
-        console.log("parsed books", books);
-        return booksData;
-    });
-} 
+
+
 function printBooks(div){
     getBooks()
-   .then((booksData) => {
-    let bookDocs = booksData.docs;
-    console.log("bookDocs", bookDocs);
-    console.log("bookTitle", booksData.num_found);
-       for(var j = 0; j < bookDocs.length; j++){
+   .then((books) => {
 
-          $('#print').append(`<h2 class="book">${bookDocs[j].title}</h2>`);
-       }
+    let test = JSON.parse(books);
+    var limitedBooks = test.docs.slice(0,10);
+    console.log("books", limitedBooks[0]);
+
+    $('#print').append(`<h2 class="book">${limitedBooks[0].title}</h2>`);
    });
    }
-printBooks(print);
+printBooks();
 
 module.exports = {getBooks, printBooks};
 
