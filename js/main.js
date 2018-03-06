@@ -2,5 +2,5 @@
 
 require("./weather-api");
 require("./print");
-// require('moment');
+require("./fetch");
 
