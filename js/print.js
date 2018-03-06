@@ -94,9 +94,11 @@ function printBooks(div){
 
     let test = JSON.parse(books);
     var limitedBooks = test.docs.slice(0,10);
-    console.log("books", limitedBooks[0]);
 
-    $('#print').append(`<h2 class="book">${limitedBooks[0].title}</h2>`);
+    for (var i = 0; i < limitedBooks.length; i++) {
+
+        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>`);
+        }
    });
    }
 printBooks();
