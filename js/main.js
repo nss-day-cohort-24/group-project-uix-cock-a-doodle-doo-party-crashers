@@ -1,5 +1,6 @@
 'use strict';
 
-require("./print");
+let display = require("./print");
 
+display.getBooks();
 
