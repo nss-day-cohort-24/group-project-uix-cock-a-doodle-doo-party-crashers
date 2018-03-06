@@ -1,4 +1,5 @@
 "use strict";
+let $ = require('../lib/node_modules/jquery');
 
 
 function weatherAPI(file) {
@@ -22,15 +23,6 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=
         let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
         let maxTempFarenheit = kelvinToFarenheit(data.main.temp_max); // Max Temp Farenheit
         let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
-
-        console.log("Weather Data: ");
-        console.log(data);
-        console.log("Location: " + location);
-        console.log("Description: " + weatherDescription);
-        console.log("Main Description: " + simplifiedWeatherDescription);
-        console.log("Max Temperature: " + maxTempFarenheit);
-        console.log("Min Temperature: " + minTempFarenheit);
-
     });
 
 module.exports = {weatherAPI};
