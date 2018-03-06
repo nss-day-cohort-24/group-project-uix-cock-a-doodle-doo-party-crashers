@@ -1,9 +1,12 @@
 "use strict";
+
 let $ = require('../lib/node_modules/jquery');
+let articlesArray = [];
+
 
 
 printNews();
-
+ 
 function getNews() {
     return $.ajax({
         url: `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=019498fb2ac9480893b5eec1134d9a6c`,
@@ -17,6 +20,13 @@ function printNews(div){
     getNews()
    .then((newsData) => {
        let articles = newsData.articles;
+
+       for(var i = 0; i < 10; i++){
+            $('#print').append(`<li><a target="_blank" href="${articles[i].url}">${articles[i].title}</a></li>`);
+    }
+});
+}
+
        for(var i = 0; i < articles.length; i++){
            $('#print').append(`<li class="newsArticle" id=${Math.random()}>${articles[i].title}</li>`);
        }
@@ -50,6 +60,5 @@ function printBooks(div){
 printBooks(print);
 
 module.exports = {getBooks, printBooks};
-
 
    
