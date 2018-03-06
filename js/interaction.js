@@ -16,20 +16,20 @@ $(document).ready(() => {
 news.click(() => {
     console.log("oh hai news");    
     event.preventDefault();
-    print.html();
+    print.empty();
     printJS.printNews();
     
 });
 meetups.click(() => {
     console.log("oh hai meetups");
     event.preventDefault();
-    print.html();
+    print.empty();
     printJS.printMeetups();
 });
 books.click(() => {
     console.log("oh hai books");
     event.preventDefault();
-    print.html();
+    print.empty();
     printJS.printBooks();
 });
 favz.click(()=> {
