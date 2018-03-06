@@ -1,4 +1,10 @@
 
+$orange: #EB7118;
+$darkgray: #3B3738;
+$mediumgray: rgb(100, 96, 97);
+$tan: #FDF3E7;
+
+
 body {
     display: flex;
     display: -webkit-flex;
@@ -8,15 +14,27 @@ nav {
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 50vw;
     height: 45vh;
-    border: 1px solid hotpink;
+    #news,
+    #books {
+        background-color: $darkgray;
+        height: 12.5vh;
+        width: 50vw;
+    }
+    #meetups,
+    #favz {
+        background-color: $mediumgray;
+        height: 12.5vh;
+        width: 50vw;
+    }
 }
 
 #weather {
     width: 50vw;
     height: 45vh;
-    border: 1px solid hotpink;
+    background-color: $orange;
 }
 
 #main {
@@ -28,4 +46,7 @@ nav {
 .apis {
     width: 50vw;
     height: 10vh;
+    background-color: $darkgray;
+    text-align: center;
+    justify-content: space-around;
 }
