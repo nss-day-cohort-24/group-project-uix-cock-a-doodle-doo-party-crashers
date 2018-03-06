@@ -4,8 +4,6 @@ let $ = require('../lib/node_modules/jquery');
 let articlesArray = [];
 
 
-
-printNews();
  
 function getNews() {
     return $.ajax({
@@ -26,9 +24,7 @@ function printNews(div){
     }
 });
 }
-//    printMeetups();
-
-          
+         
 // ====WeatherAPI Start===========================================================
 
 function weatherAPI(file) {
@@ -110,6 +106,6 @@ function printBooks(div){
    }
 printBooks(print);
 
-module.exports = {getBooks, printBooks};
+module.exports = {printNews, printMeetups, getBooks, printBooks};
 
    
