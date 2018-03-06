@@ -6,7 +6,6 @@ let counter = 0;
 let fetchModule = require("./fetch");
 let getBooks = fetchModule.getBooks;
 
-printNews();
  
 function getNews() {
     return $.ajax({
@@ -98,7 +97,6 @@ function printBooks(div){
         }
    });
    }
-printBooks();
 
 module.exports = {printNews, printMeetups, getBooks, printBooks};
 
