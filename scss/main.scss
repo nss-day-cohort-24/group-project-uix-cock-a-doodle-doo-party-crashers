@@ -3,11 +3,76 @@ $orange: #EB7118;
 $darkgray: #3B3738;
 $mediumgray: rgb(100, 96, 97);
 $tan: #FDF3E7;
+$mainFont: helvetica;
+$h1size: 75px;
+$h2size: 60px;
+$h3size: 45px;
+$psize: 25px;
+$minisize: 20px;
 
+h1 {
+    font-family: $mainFont;
+    size: $h1size;
+    font-weight: bold;
+}
+
+#todaysCurrentTemp {
+    font-size: 10em;
+    font-weight: 600;
+    margin: 15% 0 0 49%;
+}
+
+h2 {
+    font-family: $mainFont;
+    size: $h2size;
+    color: $orange;    
+    font-weight: bold;
+    
+}
+
+h3 {
+    font-family: $mainFont;
+    size: $h3size;
+    font-weight: bold;
+}
+
+p {
+    font-family: $mainFont;
+    size: $psize;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    color: $orange;
+    text-decoration: none;
+}
+
+a:active {
+    color: $orange;
+    text-decoration: underline;
+    
+}
+a:hover {
+    color: $orange;
+    text-decoration: underline;
+}
 
 body {
     display: flex;
     display: -webkit-flex;
+}
+
+.column {
+    position: fixed;
+}
+
+#weather {
+    width: 40vw;
+    height: 45vh;
+    background-color: $orange;
 }
 
 nav {
@@ -15,6 +80,7 @@ nav {
     display: -webkit-flex;
     flex-direction: column;
     justify-content: space-around;
+    text-align: center;
     width: 40vw;
     height: 45vh;
     #news,
@@ -28,6 +94,12 @@ nav {
         background-color: $mediumgray;
         height: 12.5vh;
         width: 40vw;
+    }
+    a {
+        font-family: $mainFont;
+        font-size: $h3size;
+        color: $tan;
+        text-decoration: none;
     }
 }
 
@@ -67,11 +139,14 @@ nav {
     height: 10vh;
     background-color: $darkgray;
     text-align: center;
-    justify-content: space-around;
-}
+    justify-content: space-between;
 
-.column {
-    position: fixed;
+    a {
+        font-family: $mainFont;
+        font-size: $minisize;
+        color: $tan;
+        text-decoration: none;
+    }
 }
 
 #print {
