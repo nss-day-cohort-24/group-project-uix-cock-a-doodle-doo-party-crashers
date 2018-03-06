@@ -35,6 +35,14 @@ nav {
     width: 40vw;
     height: 45vh;
     background-color: $orange;
+    color: $tan;
+    font-family: helvetica;
+}
+
+#todaysCurrentTemp {
+    font-size: 10em;
+    font-weight: 600;
+    margin: 15% 0 0 49%;
 }
 
 #main {
