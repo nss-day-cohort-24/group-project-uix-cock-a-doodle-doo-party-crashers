@@ -23,6 +23,8 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=
         let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
         let maxTempFarenheit = kelvinToFarenheit(data.main.temp_max); // Max Temp Farenheit
         let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
+        let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON.        
+        
     });
 
 module.exports = {weatherAPI};
