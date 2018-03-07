@@ -2,6 +2,7 @@
 
 let $ = require('../lib/node_modules/jquery');
 let printJS = require("./print");
+let search = require("./search");
 
 var print = $('#print');
 var news = $("#news");
@@ -30,7 +31,9 @@ books.click(() => {
     console.log("oh hai books");
     event.preventDefault();
     print.empty();
-    printJS.printBooks();
+    search.displaySearchBar();
+    search.searchInputValue();
+    // printJS.printBooks();
 });
 favz.click(()=> {
     event.preventDefault();
