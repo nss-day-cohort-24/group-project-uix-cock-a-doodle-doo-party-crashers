@@ -40,26 +40,31 @@ h1 {
 // WEATHER ICONS
 
 #rainIcon {
-    // background-color: blue;
+    position: relative;
+    top: 56px;
+    right: -38px;
+    width: 8em;
 }
 
 #sunIcon {
     width: 9em;
-    margin: 2em 0 0 1em;
-    position: relative;
-    top: 29px;
+    position: absolute;
+    top: 95px;
+    right: 240px;
 }
 
 #cloudIcon {
-    width: 9em;
+    width: 10em;
     position: relative;
-    top: 67px;
-    right: -17px;
+    top: 25px;
+    right: -22px;
 }
 
 #snowIcon {
     width: 9em;
     position: relative;
+    top: 42px;
+    right: -22px;
 }
 
 h2 {
@@ -149,13 +154,18 @@ nav {
     font-family: helvetica;
 }
 
+#dayIndo {
+    border: solid black 1px;
+}
+
 #todaysCurrentTemp {
     font-size: 8em;
     font-weight: 600;
     margin: -50% 0 0 47%;
-    position: relative;
-    right: 11px;
-    top: 125px;
+    position: absolute;
+    right: 27px;
+    top: 312px;
+    // border: solid;
 }
 
 #todaysDate {
@@ -163,7 +173,13 @@ nav {
     top: 91px;
     font-size: 1.1em;
     margin: -6% 0 5% 49%;
-    right: 21px;
+    right: 11px;
+}
+
+#todaysWeather {
+    position: absolute;
+    top: 215px;
+    right: 254px;
 }
 
 #main {

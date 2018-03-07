@@ -39,7 +39,7 @@ function weatherAPI(file) {
 }
 // console.log("this is  atestttt");
 
-var zipCode = "37205";
+var zipCode = "90001";
 
 weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=59532cc55fafea3eb5fddb6e600206b8")
     .then((data) => {
@@ -72,7 +72,7 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
     let sunImg = "/images/sun.svg";
     let sunId = "sunIcon";
 
-    let snowImg = "/images/snow.png";
+    let snowImg = "/images/snow.svg";
     let snowId = "snowIcon";
 
 
@@ -110,7 +110,7 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
     weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`; // Prints the Date
     weatherDiv.innerHTML += `<img src=${currentWeatherImg} id=${currentWeatherID}>`;    // Prints the weather icon
     weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
-    weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
+    // weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
     // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
     // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
     
