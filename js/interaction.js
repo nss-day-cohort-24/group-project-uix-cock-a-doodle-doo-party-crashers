@@ -4,6 +4,7 @@ let $ = require('../lib/node_modules/jquery');
 let printJS = require("./print");
 let search = require("./search");
 let favzJS = require("./favz");
+let builder = require("./fb-builder");
 
 var print = $('#print');
 var news = $("#news");
@@ -40,18 +41,20 @@ favz.click(()=> {
 });
 
 // FAVZ
-document.querySelector('#print').addEventListener('click', function(event) {
+document.querySelector('#print').addEventListener('click', function makeObjectMeetups(event) {
     console.log("event", event.target.className);
-
 
     if (event.target.id === 'meetupFavorite') {
         var classname = event.target.className;
-        console.log("pressed meetupFavorite button", event.target);
-        console.log("GRUUUUUUUUUUUNT");
+        // console.log("pressed meetupFavorite button", event.target);
+        // console.log("GRUUUUUUUUUUUNT");
+
         var eventDetails = document.getElementsByClassName(classname);
         for (var i = 0; i < eventDetails.length; i++) {
-            console.log(eventDetails[i].innerText);
+            // console.log(eventDetails[i].innerText);
         event.preventDefault();
         }
-        console.log(eventDetails[1].innerText);
+        // buildFavoriteMeetup();
     }});
+
+    // module.exports = {makeObjectMeetups};
