@@ -10,16 +10,56 @@ $h3size: 45px;
 $psize: 25px;
 $minisize: 20px;
 
+// body {
+//     padding: 0;
+//     margin: 0;
+// }
+
 h1 {
     font-family: $mainFont;
     size: $h1size;
     font-weight: bold;
 }
 
-#todaysCurrentTemp {
-    font-size: 10em;
-    font-weight: 600;
-    margin: 15% 0 0 49%;
+// #todaysCurrentTemp {
+//     font-size: 8em;
+//     font-weight: 600;
+//     margin: -50% 0 0 47%;
+//     position: relative;
+//     right: 34px;
+//     top: 91px;
+// }
+
+#greeting p {
+    font-size: 2em;
+    margin: 0em 0 0 0;
+    font-weight: bold;
+    color: #3B3737;
+}
+
+// WEATHER ICONS
+
+#rainIcon {
+    // background-color: blue;
+}
+
+#sunIcon {
+    width: 9em;
+    margin: 2em 0 0 1em;
+    position: relative;
+    top: 29px;
+}
+
+#cloudIcon {
+    width: 9em;
+    position: relative;
+    top: 67px;
+    right: -17px;
+}
+
+#snowIcon {
+    width: 9em;
+    position: relative;
 }
 
 h2 {
@@ -110,19 +150,19 @@ nav {
 }
 
 #todaysCurrentTemp {
-    font-size: 10em;
+    font-size: 8em;
     font-weight: 600;
-    margin: 0% 0 0 49%;
+    margin: -50% 0 0 47%;
     position: relative;
-    right: 34px;
-    top: 91px;
+    right: 11px;
+    top: 125px;
 }
 
 #todaysDate {
     position: relative;
     top: 91px;
-    font-size: 1.3em;
-    margin: 0% 0 0 49%;
+    font-size: 1.1em;
+    margin: -6% 0 5% 49%;
     right: 21px;
 }
 
