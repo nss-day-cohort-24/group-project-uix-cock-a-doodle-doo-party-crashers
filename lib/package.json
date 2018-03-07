@@ -20,5 +20,7 @@
     "jshint-stylish": "^2.2.1",
     "matchdep": "^2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.21.0"
+  }
 }

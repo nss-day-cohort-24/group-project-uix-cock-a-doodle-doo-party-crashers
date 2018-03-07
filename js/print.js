@@ -1,12 +1,12 @@
 "use strict";
 
-let $ = require('../lib/node_modules/jquery');
+let $ = require('jquery');
+let moment = require('moment');
 let articlesArray = [];
 let counter = 0;
 let fetchModule = require("./fetch");
 let getBooks = fetchModule.getBooks;
 
-printNews();
  
 function getNews() {
     return $.ajax({
@@ -29,6 +29,8 @@ function printNews(div){
 }
          
 // ====WeatherAPI Start===========================================================
+
+
 
 function weatherAPI(file) {
     return $.ajax({
@@ -54,8 +56,15 @@ console.log(data);
     let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
     let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON. 
 
+
+console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+    let dateAndTime = moment().format('MMMM Do YYYY');
+
+
+
     let weatherDiv = document.getElementById("weather");
-    weatherDiv.innerHTML = `<section id="todaysDate">${today}</section>`;
+    weatherDiv.innerHTML = `<section id="todaysDate">Today is ${dateAndTime}</section>`;
     weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`;
     weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`;
     weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
@@ -85,20 +94,15 @@ function printMeetups (div){
 }
 
 
-function printBooks(div){
-    getBooks()
+function printBooks(inputVal){
+    getBooks(inputVal)
    .then((books) => {
-
     let test = JSON.parse(books);
-    var limitedBooks = test.docs.slice(0,10);
-
+    var limitedBooks = test.docs;
     for (var i = 0; i < limitedBooks.length; i++) {
-
-        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>`);
+        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2><h3>${limitedBooks[i].author_name}</h3><p>${limitedBooks[i].first_publish_year}</p>`);
         }
    });
-   }
-printBooks();
 
 module.exports = {printNews, printMeetups, getBooks, printBooks};
 
