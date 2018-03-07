@@ -40,6 +40,7 @@ function weatherAPI(file) {
         url: file
     });
 }
+// console.log("this is  atestttt");
 
 var zipCode = "37205";
 
@@ -61,7 +62,6 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
 
     
 
-
     console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
     let dateAndTime = moment().format('MMMM Do YYYY');
@@ -74,15 +74,46 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
 
     let sunImg = "/images/sun.svg";
     let sunId = "sunIcon";
+
+    let snowImg = "/images/snow.png";
+    let snowId = "snowIcon";
+
+
+    let currentWeatherImg = "";
+    let currentWeatherID = "";
+
+
+    if (simplifiedWeatherDescription.includes("loud")) {
+        // Cloudy weather
+        currentWeatherImg = cloudImg;
+        currentWeatherID = cloudId;
+    }
+    else if (simplifiedWeatherDescription.includes("ain")) {
+        // Rainy weather
+        currentWeatherImg = rainImg;
+        currentWeatherID = rainId;
+    }
+    else if (simplifiedWeatherDescription.includes("now")) {
+        // Rainy weather
+        currentWeatherImg = snowImg;
+        currentWeatherID = snowId;
+    }
+    else {
+        // Sunny weather
+        currentWeatherImg = sunImg;
+        currentWeatherID = sunId;
+    }
+
+
     
 
     let weatherDiv = document.getElementById("weather");
     
     weatherDiv.innerHTML = `<section id="greeting"><p>Good Morning, Patrick.</p></section>`;
-    weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`;
-    weatherDiv.innerHTML += `<img src=${sunImg} id=${sunId}>`;
-    weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`;
-    weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`;
+    weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`; // Prints the Date
+    weatherDiv.innerHTML += `<img src=${currentWeatherImg} id=${currentWeatherID}>`;    // Prints the weather icon
+    weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
+    weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
     // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
     // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
     
