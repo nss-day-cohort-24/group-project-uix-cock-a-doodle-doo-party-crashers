@@ -41,12 +41,10 @@ favz.click(()=> {
 
 // FAVZ
 document.querySelector('#print').addEventListener('click', function(event) {
-    console.log("event", event.target.tagName);
-    if (event.target.tagName.toLowerCase() === 'button') {
-        let bttn = event.target;
-        let bttnId = event.target.id;
-        
+    console.log("event", event.target.className);
+    if (event.target.id === 'favorite') {
+        let classname = event.target.className;
         event.preventDefault();
-        favzJS.addFavoriteMeetup(bttnId);
+        favzJS.addFavoriteMeetup(classname);
     }
 });

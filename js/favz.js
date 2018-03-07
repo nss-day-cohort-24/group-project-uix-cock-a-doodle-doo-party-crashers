@@ -5,11 +5,11 @@ var star = $("#favzStar");
 
 let meetupFavs = [];
 
-function addFavoriteMeetup(bttnId) {
-    let id = $(`'#${bttnId}'`);
-
-    meetupFavs.push = id.siblings();
-    console.log("meetup favs!!!!", meetupFavs);
+function addFavoriteMeetup(classname) {
+    var slides = document.getElementsByClassName(classname);
+    for (var i = 0; i < slides.length; i++) {
+        console.log("class name favz", slides[i]);
+    }
 }
 
 module.exports = { addFavoriteMeetup };
