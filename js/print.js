@@ -50,7 +50,7 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
     let kelvinToFarenheit = function(temp) {
         return Math.round((1.8 * (temp - 273) + 32));
     };
-console.log(data);
+    console.log(data);
     let location = data.name; // Nashville
     let weatherDescription = data.weather[0].description[0].toUpperCase() + data.weather[0].description.substring(1); // Description
     let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
@@ -59,19 +59,32 @@ console.log(data);
     let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
     let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON. 
 
+    
 
-console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
 
     let dateAndTime = moment().format('MMMM Do YYYY');
 
+    let cloudImg = "/images/cloud.svg";
+    let cloudId = "cloudIcon";
 
+    let rainImg = "/images/rain.svg";
+    let rainId = "rainIcon";
+
+    let sunImg = "/images/sun.svg";
+    let sunId = "sunIcon";
+    
 
     let weatherDiv = document.getElementById("weather");
-    weatherDiv.innerHTML = `<section id="todaysDate">Today is ${dateAndTime}</section>`;
+    
+    weatherDiv.innerHTML = `<section id="greeting"><p>Good Morning, Patrick.</p></section>`;
+    weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`;
+    weatherDiv.innerHTML += `<img src=${sunImg} id=${sunId}>`;
     weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`;
     weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`;
-    weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
-    weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
+    // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
+    // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
     
 });
 
