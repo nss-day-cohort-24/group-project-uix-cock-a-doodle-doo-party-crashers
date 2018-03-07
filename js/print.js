@@ -7,7 +7,6 @@ let counter = 0;
 let fetchModule = require("./fetch");
 let getBooks = fetchModule.getBooks;
 
-printNews();
  
 function getNews() {
     return $.ajax({
@@ -28,9 +27,7 @@ function printNews(div){
     }
 });
 }
-   printMeetups();
-
-          
+         
 // ====WeatherAPI Start===========================================================
 
 
@@ -141,21 +138,16 @@ function printMeetups (div){
 }
 
 
-function printBooks(div){
-    getBooks()
+function printBooks(inputVal){
+    getBooks(inputVal)
    .then((books) => {
-
     let test = JSON.parse(books);
-    var limitedBooks = test.docs.slice(0,10);
-
+    var limitedBooks = test.docs;
     for (var i = 0; i < limitedBooks.length; i++) {
-
-        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>`);
+        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2><h3>${limitedBooks[i].author_name}</h3><p>${limitedBooks[i].first_publish_year}</p>`);
         }
    });
-   }
-printBooks();
 
-module.exports = {getBooks, printBooks};
+module.exports = {printNews, printMeetups, getBooks, printBooks};
 
    
