@@ -42,9 +42,16 @@ favz.click(()=> {
 // FAVZ
 document.querySelector('#print').addEventListener('click', function(event) {
     console.log("event", event.target.className);
-    if (event.target.id === 'favorite') {
-        let classname = event.target.className;
+
+
+    if (event.target.id === 'meetupFavorite') {
+        var classname = event.target.className;
+        console.log("pressed meetupFavorite button", event.target);
+        console.log("GRUUUUUUUUUUUNT");
+        var eventDetails = document.getElementsByClassName(classname);
+        for (var i = 0; i < eventDetails.length; i++) {
+            console.log(eventDetails[i].innerText);
         event.preventDefault();
-        favzJS.addFavoriteMeetup(classname);
-    }
-});
+        }
+        console.log(eventDetails[1].innerText);
+    }});

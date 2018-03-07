@@ -5,14 +5,8 @@ var star = $("#favzStar");
 
 let meetupFavs = [];
 
-function addFavoriteMeetup(classname) {
-    var slides = document.getElementsByClassName(classname);
-    for (var i = 0; i < slides.length; i++) {
-        console.log("class name favz", slides[i]);
-    }
-}
 
-module.exports = { addFavoriteMeetup };
+
 
 // if (bttn.className === "delete") {
 //     let dCompare = bttnId.slice(7, 10);
