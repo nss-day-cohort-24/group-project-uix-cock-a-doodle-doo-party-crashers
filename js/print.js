@@ -78,11 +78,10 @@ function printMeetups (div){
     .then((meetupdata) => {
         let event = meetupdata.events;
         for (let i = 0; i < 10; i++) {
-            $('#print').append(`<li class="meetupevent"><h2>${event[i].name}</h2><h3>${event[i].local_date} ${event[i].local_time}</h3><p>${event[i].venue.name} - ${event[i].venue.address_1}<br><a target="_blank" href="${event[i].link}">learn more</a></li>`);
+            $('#print').append(`<li class="meetupevent"><i class="far fa-star"></i><h2>${event[i].name}</h2><h3>${event[i].local_date} ${event[i].local_time}</h3><p>${event[i].venue.name} - ${event[i].venue.address_1}<br><a target="_blank" href="${event[i].link}">learn more</a></li>`);
         }
     });
 }
-
 
 function printBooks(div){
     getBooks()

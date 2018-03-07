@@ -37,3 +37,12 @@ favz.click(()=> {
 
     console.log("hey gurl hey");
 });
+
+// FAVZ
+
+function freeze() {
+    if (window.pageYOffset >= sticky) {
+        header.addClass("sticky");
+    } else {
+        header.removeClass("sticky");
+    }
