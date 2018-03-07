@@ -147,6 +147,7 @@ function printBooks(inputVal){
         $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2><h3>${limitedBooks[i].author_name}</h3><p>${limitedBooks[i].first_publish_year}</p>`);
         }
    });
+}
 
 module.exports = {printNews, printMeetups, getBooks, printBooks};
 
