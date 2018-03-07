@@ -2,9 +2,11 @@
 
 let $ = require('jquery');
 let moment = require('moment');
+let fetchModule = require("./fetch");
+let printdata = require("./printdata");
+
 let articlesArray = [];
 let counter = 0;
-let fetchModule = require("./fetch");
 let getBooks = fetchModule.getBooks;
 
  
@@ -127,15 +129,15 @@ function getMeetups () {
 }
 
 
-function printMeetups (div){
+function printMeetups(){
     getMeetups()
     .then((meetupdata) => {
         let event = meetupdata.events;
-        for (let i = 0; i < 10; i++) {
-            $('#print').append(`<li class="meetupevent"><h2>${event[i].name}</h2><h3>${event[i].local_date} ${event[i].local_time}</h3><p>${event[i].venue.name} - ${event[i].venue.address_1}<br><a target="_blank" href="${event[i].link}">learn more</a></li>`);
-        }
+        printdata.buildMeetup(event);
     });
 }
+
+
 
 
 function printBooks(inputVal){
