@@ -3,6 +3,7 @@
 let $ = require('../lib/node_modules/jquery');
 let printJS = require("./print");
 let search = require("./search");
+let favzJS = require("./favz");
 
 var print = $('#print');
 var news = $("#news");
@@ -14,21 +15,18 @@ $(document).ready(() => {
     printJS.printNews();
 });
 
-news.click(() => {
-    console.log("oh hai news");    
+news.click(() => {    
     event.preventDefault();
     print.empty();
     printJS.printNews();
     
 });
 meetups.click(() => {
-    console.log("oh hai meetups");
     event.preventDefault();
     print.empty();
     printJS.printMeetups();
 });
 books.click(() => {
-    console.log("oh hai books");
     event.preventDefault();
     print.empty();
     search.displaySearchBar();
@@ -42,10 +40,13 @@ favz.click(()=> {
 });
 
 // FAVZ
-
-function freeze() {
-    if (window.pageYOffset >= sticky) {
-        header.addClass("sticky");
-    } else {
-        header.removeClass("sticky");
+document.querySelector('#print').addEventListener('click', function(event) {
+    console.log("event", event.target.tagName);
+    if (event.target.tagName.toLowerCase() === 'button') {
+        let bttn = event.target;
+        let bttnId = event.target.id;
+        
+        event.preventDefault();
+        favzJS.addFavoriteMeetup(bttnId);
     }
+});

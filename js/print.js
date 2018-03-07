@@ -2,9 +2,11 @@
 
 let $ = require('jquery');
 let moment = require('moment');
+let fetchModule = require("./fetch");
+let printdata = require("./printdata");
+
 let articlesArray = [];
 let counter = 0;
-let fetchModule = require("./fetch");
 let getBooks = fetchModule.getBooks;
 
  
@@ -83,24 +85,19 @@ function getMeetups () {
 }
 
 
-function printMeetups (div){
+function printMeetups(){
     getMeetups()
     .then((meetupdata) => {
         let event = meetupdata.events;
-        for (let i = 0; i < 10; i++) {
-            $('#print').append(`<li class="meetupevent"><i class="far fa-star"></i><h2>${event[i].name}</h2><h3>${event[i].local_date} ${event[i].local_time}</h3><p>${event[i].venue.name} - ${event[i].venue.address_1}<br><a target="_blank" href="${event[i].link}">learn more</a></li>`);
-        }
+        printdata.buildMeetup(event);
     });
 }
 
-<<<<<<< HEAD
-function printBooks(div){
-    getBooks()
-=======
+
+
 
 function printBooks(inputVal){
     getBooks(inputVal)
->>>>>>> master
    .then((books) => {
     let test = JSON.parse(books);
     var limitedBooks = test.docs;
@@ -108,6 +105,7 @@ function printBooks(inputVal){
         $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2><h3>${limitedBooks[i].author_name}</h3><p>${limitedBooks[i].first_publish_year}</p>`);
         }
    });
+}
 
 module.exports = {printNews, printMeetups, getBooks, printBooks};
 
