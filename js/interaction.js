@@ -17,10 +17,28 @@ var meetups = $("#meetups");
 var books = $("#books");
 var favz = $("#favz");
 var newsFavz = $("newsFavz");
+// var newsFavzDelete = document.querySelector("newsFavoriteDelete");
 
+
+// Event listeners
 $(document).ready(() => {
     printJS.printNews();
 });
+
+document.body.addEventListener('click', check);
+
+function check(event){
+    event.preventDefault();
+    if(event.target.className === "newsFavoriteDelete"){
+        console.log('newsFavoriteDelete clicked');
+        interaction.deleteNewsFav();
+        favzJS.getNewsFavs(user.getUser()).then((favData) => {
+            console.log("favData", favData);
+            printdata.printNewsToFavs(favData);
+        });
+    }
+
+    }
 
 news.click(() => {    
     event.preventDefault();
@@ -45,9 +63,16 @@ favz.click(()=> {
         console.log(favData);
         printdata.printNewsToFavs(favData);
     });
-
-    console.log("hey gurl hey");
 });
+// $('.newsFavoriteDelete').click(() => {
+//     console.log("newsFavDelete clicked");
+//     // event.preventDefault();
+//     interaction.deleteNewsFav();
+//     favzJS.getNewsFavs(user.getUser()).then((favData) => {
+//         console.log("favData", favData);
+//         printdata.printNewsToFavs(favData);
+//     });
+// });
 
 
 // Query selectors for favorites and search button
