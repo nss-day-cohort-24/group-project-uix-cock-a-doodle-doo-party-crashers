@@ -46,5 +46,5 @@ function setUser(val){
 	currentUser = val;
 }
 
-module.exports = {logInGoogle};
+module.exports = {logInGoogle, getUser, setUser, logOut};
 
