@@ -13,7 +13,6 @@ var config = {
   databaseURL: fbData.databaseURL
 };
 
-
 firebase.initializeApp(config);
 
 firebase.getFBsettings = () => {
