@@ -113,4 +113,33 @@ let printNewsToFavs = (favNewsData) => {
     });
 };
 
-module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray, printNewsToFavs};
+let printMeetupsToFavs = (favMeetupData) => {
+    let keys = Object.keys(favMeetupData);
+    console.log("keys", keys);
+    keys.forEach(function (item) {
+        console.log(favMeetupData[item]);
+        $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
+        <button id="edit" class="newsFavoriteEdit"> Edit </button>
+        <h2>${favMeetupData[item].name}</h2>
+        <h3>${favMeetupData[item].date}</h3>
+        <h3>${favMeetupData[item].time}</h3>
+        <p>${favMeetupData[item].venue}</p>
+        <p> ${favMeetupData[item].address}</p>
+        <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);
+    });
+};
+
+let printBooksToFavs = (favBookData) => {
+    let keys = Object.keys(favBookData);
+    console.log("keys", keys);
+    keys.forEach(function (item) {
+        console.log(favBookData[item]);
+        $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
+        <button id="edit" class="newsFavoriteEdit"> Edit </button>
+            <h2 class="book">${favBookData[item].title}</h2>
+            <h3>${favBookData[item].author}</h3>
+            <p>${favBookData[item].published}</p>`);
+    });
+};
+
+module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray, printNewsToFavs, printMeetupsToFavs, printBooksToFavs};

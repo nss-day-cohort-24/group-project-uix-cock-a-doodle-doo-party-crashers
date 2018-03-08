@@ -63,6 +63,16 @@ favz.click(()=> {
         console.log(favData);
         printdata.printNewsToFavs(favData);
     });
+
+    favzJS.getMeetupFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printMeetupsToFavs(favData);
+    });
+
+    favzJS.getBookFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printBooksToFavs(favData);
+    });
 });
 // $('.newsFavoriteDelete').click(() => {
 //     console.log("newsFavDelete clicked");
