@@ -4,6 +4,14 @@ let $ = require('jquery');
 let moment = require('moment');
 let fetchModule = require("./fetch");
 let printdata = require("./printdata");
+let user = require("./user.js");
+
+let firebase = require("./fb-config"),
+provider = new firebase.auth.GoogleAuthProvider(),
+currentUser = null;
+
+let mainJS  = require("./main");
+
 
 let articlesArray = [];
 let counter = 0;
@@ -46,17 +54,30 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
         return printWeatherToDom(data);
     })
     .then(() => {
-        $("#logout").click(() => {
-            console.log("logout clicked");
+        $("#logout").click((user) => {
+
+
             // user.logOut();
-            // user.logInGoogle()
+
+
+
+            
+            // user.logInGoogle();
+            // console.log("logout clicked");
+
+
+
             // .then((result) => {
             //   user.setUser(result.user.uid);
             //   $("#auth-btn").addClass("is-hidden");
             //   $("#logout").removeClass("is-hidden");
             //   console.log("post-logout-login populate", result);
-            //   loadSongsToDOM();
+            // //   loadSongsToDOM();
             // });
+
+
+
+
         });
     });
 
@@ -137,6 +158,18 @@ function printWeatherToDom(data) {
         resolve();
     });
 }
+
+
+$(document).click(function(){
+    if(event.target.id === "logout") {
+        console.log("test");
+        user.logOut();
+        user.logInGoogle();
+    }
+});
+
+
+
 
 // ====WeatherAPI End===========================================================
 
