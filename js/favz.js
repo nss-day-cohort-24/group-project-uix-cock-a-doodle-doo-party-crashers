@@ -2,11 +2,18 @@
 
 let $ = require('../lib/node_modules/jquery');
 var star = $("#favzStar");
+let firebase = require('./fb-config');
 
 let meetupFavs = [];
 
 
-
+function getFavs(user) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/songs.json?orderBy="uid"&equalTo="${user}"`
+    }).done((favData) => {
+      return favData;
+    });
+  }
 
 // if (bttn.className === "delete") {
 //     let dCompare = bttnId.slice(7, 10);
