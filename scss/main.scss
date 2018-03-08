@@ -67,6 +67,20 @@ h1 {
     right: -22px;
 }
 
+#logout {
+    position: relative;
+    bottom: -10em;
+    left: 12em;
+}
+
+#prompt {
+    display: inline;
+    font-size: .6em;
+    position: relative;
+    top: 9.5em;
+    left: 18.5em;
+}
+
 h2 {
     font-family: $mainFont;
     size: $h2size;

@@ -1,12 +1,51 @@
 "use strict";
 
-
 //install firebase into lib folder npm install firebase --save
 let firebase = require("./fb-config"),
-	 provider = new firebase.auth.GoogleAuthProvider(),
-	 currentUser = null;
+provider = new firebase.auth.GoogleAuthProvider(),
+currentUser = null;
 
 let mainJS  = require("./main");
+let $ = require('jquery');
+
+console.log("test");
+
+
+// ========================
+$(document).ready(function() {
+// 	console.log($("img").html());
+console.log("logout", $("body"));
+$("#logout").hide();
+});
+
+
+// $("img").hide();
+
+
+// $("#logout").click(() => {
+// 	console.log("logout clicked");
+// 	// user.logOut();
+// 	// user.logInGoogle()
+// 	// .then((result) => {
+// 	//   user.setUser(result.user.uid);
+// 	//   $("#auth-btn").addClass("is-hidden");
+// 	//   $("#logout").removeClass("is-hidden");
+// 	//   console.log("post-logout-login populate", result);
+// 	//   loadSongsToDOM();
+// 	// });
+//    });
+
+
+
+
+
+
+
+
+
+// ========================
+
+
 
 
 logInGoogle()

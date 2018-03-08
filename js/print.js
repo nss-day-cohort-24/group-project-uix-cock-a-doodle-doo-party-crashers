@@ -41,82 +41,104 @@ function weatherAPI(file) {
 }
 // console.log("this is  atestttt");
 
-var zipCode = "90001";
+var zipCode = "37205";
 
 weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=59532cc55fafea3eb5fddb6e600206b8")
     .then((data) => {
-
-    // Converts temperatures from Kelvin to Farenheit:
-    let kelvinToFarenheit = function(temp) {
-        return Math.round((1.8 * (temp - 273) + 32));
-    };
-    console.log(data);
-    let location = data.name; // Nashville
-    let weatherDescription = data.weather[0].description[0].toUpperCase() + data.weather[0].description.substring(1); // Description
-    let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
-    let currentTempFarenheit = kelvinToFarenheit(data.main.temp); // Current Temp Farenheit
-    let maxTempFarenheit = kelvinToFarenheit(data.main.temp_max); // Max Temp Farenheit
-    let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
-    let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON. 
-
-    
-
-    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
-
-    let dateAndTime = moment().format('MMMM Do YYYY');
-
-    let cloudImg = "/images/cloud.svg";
-    let cloudId = "cloudIcon";
-
-    let rainImg = "/images/rain.svg";
-    let rainId = "rainIcon";
-
-    let sunImg = "/images/sun.svg";
-    let sunId = "sunIcon";
-
-    let snowImg = "/images/snow.svg";
-    let snowId = "snowIcon";
+        return printWeatherToDom(data);
+    })
+    .then(() => {
+        $("#logout").click(() => {
+            console.log("logout clicked");
+            user.logOut();
+            user.logInGoogle()
+            .then((result) => {
+              user.setUser(result.user.uid);
+              $("#auth-btn").addClass("is-hidden");
+              $("#logout").removeClass("is-hidden");
+              console.log("post-logout-login populate", result);
+              loadSongsToDOM();
+            });
+        });
+    });
 
 
-    let currentWeatherImg = "";
-    let currentWeatherID = "";
+function printWeatherToDom(data) {
+    return new Promise(function(resolve){
+        // Converts temperatures from Kelvin to Farenheit:
+        let kelvinToFarenheit = function(temp) {
+            return Math.round((1.8 * (temp - 273) + 32));
+        };
+        console.log(data);
+        let location = data.name; // Nashville
+        let weatherDescription = data.weather[0].description[0].toUpperCase() + data.weather[0].description.substring(1); // Description
+        let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
+        let currentTempFarenheit = kelvinToFarenheit(data.main.temp); // Current Temp Farenheit
+        let maxTempFarenheit = kelvinToFarenheit(data.main.temp_max); // Max Temp Farenheit
+        let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
+        let today = new Date().toDateString(); // Today's Date in human readable format I AM HU-MON. 
+
+        
+
+        console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+        let dateAndTime = moment().format('MMMM Do YYYY');
+
+        let cloudImg = "/images/cloud.svg";
+        let cloudId = "cloudIcon";
+
+        let rainImg = "/images/rain.svg";
+        let rainId = "rainIcon";
+
+        let sunImg = "/images/sun.svg";
+        let sunId = "sunIcon";
+
+        let snowImg = "/images/snow.svg";
+        let snowId = "snowIcon";
 
 
-    if (simplifiedWeatherDescription.includes("loud")) {
-        // Cloudy weather
-        currentWeatherImg = cloudImg;
-        currentWeatherID = cloudId;
-    }
-    else if (simplifiedWeatherDescription.includes("ain")) {
-        // Rainy weather
-        currentWeatherImg = rainImg;
-        currentWeatherID = rainId;
-    }
-    else if (simplifiedWeatherDescription.includes("now")) {
-        // Rainy weather
-        currentWeatherImg = snowImg;
-        currentWeatherID = snowId;
-    }
-    else {
-        // Sunny weather
-        currentWeatherImg = sunImg;
-        currentWeatherID = sunId;
-    }
+        let currentWeatherImg = "";
+        let currentWeatherID = "";
 
 
-    
+        if (simplifiedWeatherDescription.includes("loud")) {
+            // Cloudy weather
+            currentWeatherImg = cloudImg;
+            currentWeatherID = cloudId;
+        }
+        else if (simplifiedWeatherDescription.includes("ain")) {
+            // Rainy weather
+            currentWeatherImg = rainImg;
+            currentWeatherID = rainId;
+        }
+        else if (simplifiedWeatherDescription.includes("now")) {
+            // Rainy weather
+            currentWeatherImg = snowImg;
+            currentWeatherID = snowId;
+        }
+        else {
+            // Sunny weather
+            currentWeatherImg = sunImg;
+            currentWeatherID = sunId;
+        }
 
-    let weatherDiv = document.getElementById("weather");
-    
-    weatherDiv.innerHTML = `<section id="greeting"><p>Good Morning, Patrick.</p></section>`;
-    weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`; // Prints the Date
-    weatherDiv.innerHTML += `<img src=${currentWeatherImg} id=${currentWeatherID}>`;    // Prints the weather icon
-    weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
-    // weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
-    // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
-    // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
-    
-});
+
+        
+
+        let weatherDiv = document.getElementById("weather");
+        
+        weatherDiv.innerHTML = `<section id="greeting"><p>Good Morning, Patrick.</p></section>`;
+        weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`; // Prints the Date
+        weatherDiv.innerHTML += `<img src=${currentWeatherImg} id=${currentWeatherID}>`;    // Prints the weather icon
+        weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
+        weatherDiv.innerHTML += `<p id="prompt">Not you?</p>`; // Login button
+        weatherDiv.innerHTML += `<button id="logout">Logout</button>`; // Login button
+        // weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
+        // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
+        // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
+        resolve();
+    });
+}
 
 // ====WeatherAPI End===========================================================
 

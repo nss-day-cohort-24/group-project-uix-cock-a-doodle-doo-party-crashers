@@ -5,3 +5,4 @@ require("./print");
 require("./interaction");
 require("./fetch");
 require("./printdata");
+require("./user");
