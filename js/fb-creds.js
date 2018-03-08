@@ -1,9 +1,6 @@
 "use strict";
 
 
-
-
-
 function getKey() {
   return {
     apiKey: "AIzaSyBhTEsI0BaFaLtfjubRfUhZuuEtTGhBo54",
