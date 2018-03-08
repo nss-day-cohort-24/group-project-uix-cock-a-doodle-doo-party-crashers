@@ -4,7 +4,6 @@ let $ = require('../lib/node_modules/jquery');
 let printJS = require("./print");
 let printdata = require("./printdata");
 let search = require("./search");
-let favzJS = require("./favz");
 
 var print = $('#print');
 var news = $("#news");
