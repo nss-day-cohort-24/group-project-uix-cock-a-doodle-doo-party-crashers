@@ -46,7 +46,15 @@ favz.click(()=> {
         printdata.printNewsToFavs(favData);
     });
 
-    console.log("hey gurl hey");
+    favzJS.getMeetupFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printMeetupsToFavs(favData);
+    });
+
+    favzJS.getBookFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printBooksToFavs(favData);
+    });
 });
 
 
