@@ -1,6 +1,8 @@
 "use strict";
 
 let $ = require('jquery');
+let user = require("./user");
+let getUser = user.getUser;
 
 let number;
 let identifer;
@@ -39,7 +41,8 @@ function buildMeetup(event) {
             time: event[i].local_time,
             venue: event[i].venue.name,
             address: event[i].venue.address_1,
-            url: event[i].link
+            url: event[i].link,
+            uid: getUser()
         });
         meetupnum = meetupnum + 1;
     }
@@ -63,7 +66,8 @@ function buildNews(articles){
         {
             id: identifer,
             title: articles[i].title,
-            url: articles[i].url   
+            url: articles[i].url,
+            uid: getUser() 
         });
         newsnum = newsnum + 1;
     }
@@ -90,7 +94,8 @@ function buildBooks(limitedBooks){
                 id: identifer,
                 title: limitedBooks[i].title,
                 author: limitedBooks[i].author_name,
-                published: limitedBooks[i].first_publish_year
+                published: limitedBooks[i].first_publish_year,
+                uid: getUser()
             });
             booksnum = booksnum + 1;
     }
