@@ -104,8 +104,9 @@ function buildBooks(limitedBooks){
 // Function to print to favorites 
 
 let printNewsToFavs = (favNewsData) => {
-    console.log("printNewsToFavs", favNewsData.title);
-    Object.keys(favNewsData).forEach(function(item){
+    $('#print').append(`<div class="banner"><h1>News</h1></div>`);
+    let keys = Object.keys(favNewsData);
+    keys.forEach(function(item){
         console.log(favNewsData[item].title);
         $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
         <button id="edit" class="newsFavoriteEdit"> Edit </button>
@@ -114,8 +115,8 @@ let printNewsToFavs = (favNewsData) => {
 };
 
 let printMeetupsToFavs = (favMeetupData) => {
+    $('#print').append(`<div class="banner"><h1>Meetups</h1></div>`);
     let keys = Object.keys(favMeetupData);
-    console.log("keys", keys);
     keys.forEach(function (item) {
         console.log(favMeetupData[item]);
         $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
@@ -130,8 +131,8 @@ let printMeetupsToFavs = (favMeetupData) => {
 };
 
 let printBooksToFavs = (favBookData) => {
+    $('#print').append(`<div class="banner"><h1>Books</h1></div>`);
     let keys = Object.keys(favBookData);
-    console.log("keys", keys);
     keys.forEach(function (item) {
         console.log(favBookData[item]);
         $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
