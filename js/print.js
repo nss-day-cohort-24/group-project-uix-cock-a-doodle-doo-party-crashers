@@ -48,15 +48,15 @@ weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&ap
     .then(() => {
         $("#logout").click(() => {
             console.log("logout clicked");
-            user.logOut();
-            user.logInGoogle()
-            .then((result) => {
-              user.setUser(result.user.uid);
-              $("#auth-btn").addClass("is-hidden");
-              $("#logout").removeClass("is-hidden");
-              console.log("post-logout-login populate", result);
-              loadSongsToDOM();
-            });
+            // user.logOut();
+            // user.logInGoogle()
+            // .then((result) => {
+            //   user.setUser(result.user.uid);
+            //   $("#auth-btn").addClass("is-hidden");
+            //   $("#logout").removeClass("is-hidden");
+            //   console.log("post-logout-login populate", result);
+            //   loadSongsToDOM();
+            // });
         });
     });
 
