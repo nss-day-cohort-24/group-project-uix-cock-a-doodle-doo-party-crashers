@@ -31,8 +31,6 @@ books.click(() => {
     event.preventDefault();
     print.empty();
     search.displaySearchBar();
-    search.searchInputValue();
-    // printJS.printBooks();
 });
 favz.click(()=> {
     event.preventDefault();
@@ -40,8 +38,9 @@ favz.click(()=> {
     console.log("hey gurl hey");
 });
 
-// FAVZ
-document.querySelector('#print').addEventListener('click', function makeObjectMeetups(event) {
+
+// Query selectors for favorites and search button
+document.querySelector('#print').addEventListener('click', (event) => {
 
     if (event.target.id === "meetupFavorite") {
         let classname = event.target.className;
@@ -70,5 +69,8 @@ document.querySelector('#print').addEventListener('click', function makeObjectMe
                     console.log("this book will be put to favorites", printdata.booksArray[i].id);
                 }
             }
+        } else if (event.target.id === "search-btn") {
+            console.log("I heard the search button");
+            search.searchInputValue();
         }
-    });
+});
