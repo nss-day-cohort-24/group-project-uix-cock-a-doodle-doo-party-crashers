@@ -11,6 +11,7 @@ function getNewsFavs(user) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/news.json?orderBy="uid"&equalTo="${user}"`
     }).done((favData) => {
+      console.log('favData from getNews Favs', favData);
       return favData;
     });
   }
