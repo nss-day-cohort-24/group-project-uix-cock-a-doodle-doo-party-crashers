@@ -2,9 +2,9 @@
 
 let $ = require('../lib/node_modules/jquery');
 let printJS = require("./print");
+let printdata = require("./printdata");
 let search = require("./search");
 let favzJS = require("./favz");
-let builder = require("./fb-builder");
 
 var print = $('#print');
 var news = $("#news");
@@ -42,19 +42,33 @@ favz.click(()=> {
 
 // FAVZ
 document.querySelector('#print').addEventListener('click', function makeObjectMeetups(event) {
-    console.log("event", event.target.className);
 
-    if (event.target.id === 'meetupFavorite') {
-        var classname = event.target.className;
-        // console.log("pressed meetupFavorite button", event.target);
-        // console.log("GRUUUUUUUUUUUNT");
+    if (event.target.id === "meetupFavorite") {
+        let classname = event.target.className;
 
-        var eventDetails = document.getElementsByClassName(classname);
-        for (var i = 0; i < eventDetails.length; i++) {
-            // console.log(eventDetails[i].innerText);
-        event.preventDefault();
+        for (let i = 0; i < printdata.meetupArray.length; i++) {
+                if (classname === printdata.meetupArray[i].id){
+                    // PUT to fb
+                    console.log("this meetup will put to favorites", printdata.meetupArray[i].id);
+                }
+            }
+        } else if (event.target.id === "newsFavorite"){
+            let classname = event.target.className;
+
+            for (let i = 0; i < printdata.newsArray.length; i++) {
+                if (classname === printdata.newsArray[i].id) {
+                    // PUT to fb
+                    console.log("this news will put to favorites", printdata.newsArray[i].id);
+                }
+            }
+        } else if (event.target.id === "booksFavorite"){
+            let classname = event.target.className;
+
+            for (let i = 0; i < printdata.booksArray.length; i++) {
+                if (classname === printdata.booksArray[i].id) {
+                    // PUT to fb
+                    console.log("this book will be put to favorites", printdata.booksArray[i].id);
+                }
+            }
         }
-        // buildFavoriteMeetup();
-    }});
-
-    // module.exports = {makeObjectMeetups};
+    });
