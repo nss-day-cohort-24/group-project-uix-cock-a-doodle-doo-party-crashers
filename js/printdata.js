@@ -101,4 +101,16 @@ function buildBooks(limitedBooks){
     }
 }
 
-module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray };
+// Function to print to favorites 
+
+let printNewsToFavs = (favNewsData) => {
+    console.log("printNewsToFavs", favNewsData.title);
+    Object.keys(favNewsData).forEach(function(item){
+        console.log(favNewsData[item].title);
+        $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
+        <button id="edit" class="newsFavoriteEdit"> Edit </button>
+        <a target="_blank" href="${favNewsData[item].url}">${favNewsData[item].title}</a></li>`);
+    });
+};
+
+module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray, printNewsToFavs};

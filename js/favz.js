@@ -7,13 +7,15 @@ let firebase = require('./fb-config');
 let meetupFavs = [];
 
 
-function getFavs(user) {
+function getNewsFavs(user) {
     return $.ajax({
-      url: `${firebase.getFBsettings().databaseURL}/songs.json?orderBy="uid"&equalTo="${user}"`
+      url: `${firebase.getFBsettings().databaseURL}/news.json?orderBy="uid"&equalTo="${user}"`
     }).done((favData) => {
       return favData;
     });
   }
+
+module.exports = {getNewsFavs};  
 
 // if (bttn.className === "delete") {
 //     let dCompare = bttnId.slice(7, 10);

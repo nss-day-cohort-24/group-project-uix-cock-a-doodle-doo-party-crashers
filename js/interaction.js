@@ -5,6 +5,8 @@ let printJS = require("./print");
 let printdata = require("./printdata");
 let search = require("./search");
 let interaction = require("./db-interaction");
+let favzJS = require("./favz");
+let user = require("./user");
 let addMeetupFav = interaction.addMeetupFav;
 let addNewsFav = interaction.addNewsFav;
 let addBooksFav = interaction.addBooksFav;
@@ -14,6 +16,7 @@ var news = $("#news");
 var meetups = $("#meetups");
 var books = $("#books");
 var favz = $("#favz");
+var newsFavz = $("newsFavz");
 
 $(document).ready(() => {
     printJS.printNews();
@@ -37,6 +40,11 @@ books.click(() => {
 });
 favz.click(()=> {
     event.preventDefault();
+    print.empty();
+    favzJS.getNewsFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printNewsToFavs(favData);
+    });
 
     console.log("hey gurl hey");
 });
