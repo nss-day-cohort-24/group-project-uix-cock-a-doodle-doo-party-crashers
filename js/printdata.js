@@ -43,7 +43,6 @@ function buildMeetup(event) {
         });
         meetupnum = meetupnum + 1;
     }
-    console.log("meetup array inside of loop", meetupArray);
 }
 
 function buildNews(articles){
