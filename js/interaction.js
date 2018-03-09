@@ -7,6 +7,8 @@ let search = require("./search");
 let interaction = require("./db-interaction");
 let favzJS = require("./favz");
 let user = require("./user");
+let templates = require("./templates");
+
 let addMeetupFav = interaction.addMeetupFav;
 let addNewsFav = interaction.addNewsFav;
 let addBooksFav = interaction.addBooksFav;
@@ -124,3 +126,30 @@ document.querySelector('#print').addEventListener('click', (event) => {
             search.searchInputValue();
         }
 });
+
+// go get the song from database and then populate the form for editing.
+$(document).on("click", ".meetupFavoriteEdit", function () {
+    let meetupObj = buildmeetupObj(),
+        meetupID = $(this).data("edit-id");
+    console.log("meetup ID", meetupID);
+    favzJS.editMeetupFav(meetupID, meetupObj)
+        .then((favdata) => {
+            return templates.meetupForm(favdata, meetupID);
+        })
+        .then((finishedForm) => {
+            $(".uiContainer--wrapper").html(finishedForm);
+        });
+});
+
+function buildmeetupObj() {
+    let meetupObj = {
+        name: $("#form--name").val(),
+        date: $("#form--date").val(),
+        time: $("#form--time").val(),
+        venue: $("#form--venue").val(),
+        address: $("#form--address").val(),
+        url: $("#form--url").val(),
+        uid: user.getUser()
+    };
+    return meetupObj;
+}
