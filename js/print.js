@@ -93,9 +93,12 @@ function printWeatherToDom(data) {
             return Math.round((1.8 * (temp - 273) + 32));
         };
         console.log(data);
+        
         let location = data.name; // Nashville
         let weatherDescription = data.weather[0].description[0].toUpperCase() + data.weather[0].description.substring(1); // Description
         let simplifiedWeatherDescription = data.weather[0].main; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
+        let locationName = data.name; // Main weather descriptions: Clear, Clear sky, Cloud, Few clouds, Broken clouds, Rain, Snow
+        
         let currentTempFarenheit = kelvinToFarenheit(data.main.temp); // Current Temp Farenheit
         let maxTempFarenheit = kelvinToFarenheit(data.main.temp_max); // Max Temp Farenheit
         let minTempFarenheit = kelvinToFarenheit(data.main.temp_min); // Min Temp Farenheit
@@ -122,7 +125,7 @@ function printWeatherToDom(data) {
 
         let currentWeatherImg = "";
         let currentWeatherID = "";
-
+console.log("is this getting to the if statemnt?");
 
         if (simplifiedWeatherDescription.includes("loud")) {
             // Cloudy weather
@@ -156,6 +159,19 @@ function printWeatherToDom(data) {
         weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
         weatherDiv.innerHTML += `<p id="prompt">Not you?</p>`; // Login button
         weatherDiv.innerHTML += `<button id="logout">Logout</button>`; // Login button
+        weatherDiv.innerHTML += `<form id="zipForm">
+        
+            <input id="zipInput" type="text"></input>
+            <button id="zipButton">Submit</button>
+            <p id="cityName">${locationName}</p>
+        
+        </form>`; 
+
+        
+        // $("#zipButton").on("click", function() {
+        //     console.log("zip workin?");
+        // });
+        //  
         // weatherDiv.innerHTML += `<section id="todaysWeather">${weatherDescription}</section>`; // Prints brief weather description
         // weatherDiv.innerHTML += `<section id="todaysHigh">${maxTempFarenheit}°</section>`;
         // weatherDiv.innerHTML += `<section id="todaysLow">${minTempFarenheit}°</section>`;
@@ -172,6 +188,42 @@ $(document).click(function(){
         console.log("running?");
     }
 });
+
+$(document).click(function(){
+    if(event.target.id === "zipButton") {
+        console.log("test");
+        console.log("zip running?");
+        zipCode = $("#zipInput").val();
+        console.log(zipCode);
+
+        weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=59532cc55fafea3eb5fddb6e600206b8")
+    .then((data) => {
+        return printWeatherToDom(data);
+
+        
+    });
+
+
+// console.log('zipCode',zipCode);
+
+}
+});
+
+
+
+
+
+
+// $(document).click(function(){
+//     if(event.target.id === "zipButton") {
+//         console.log("test");
+//         console.log("running?");
+//     }
+// });
+
+
+
+
 
 
 

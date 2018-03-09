@@ -77,6 +77,7 @@ h1 {
     position: relative;
     top: 25px;
     right: -22px;
+    margin: 0 -11em -9em 0;
 }
 
 #snowIcon {
@@ -88,8 +89,15 @@ h1 {
 
 #logout {
     position: relative;
-    bottom: -20em;
+    bottom: -19.6em;
     left: 26em;
+}
+
+#cityName {
+    font-size: 14px;
+    position: relative;
+    right: -16.5em;
+    top: 8em;
 }
 
 #prompt {
@@ -99,6 +107,19 @@ h1 {
     top: 21em;
     left: 34.5em;
 }
+
+#zipForm input {
+    position: relative;
+    right: -2em;
+    top: 18em;
+}
+
+#zipButton {
+    position: relative;
+    top: 18em;
+    right: -2em;
+}
+
 
 li > a {
     color: #eb7019;
