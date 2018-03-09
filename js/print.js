@@ -161,7 +161,7 @@ console.log("is this getting to the if statemnt?");
         weatherDiv.innerHTML += `<button id="logout">Logout</button>`; // Login button
         weatherDiv.innerHTML += `<form id="zipForm">
         
-            <input id="zipInput" type="text"></input>
+            <input id="zipInput" type="text" placeholder="Enter Zipcode"></input>
             <button id="zipButton">Submit</button>
             <p id="cityName">${locationName}</p>
         
