@@ -50,15 +50,20 @@ meetups.click(() => {
     event.preventDefault();
     print.empty();
     printJS.printMeetups();
+    $('#print').append(`<h2 id="meetupsHeading">Meetups</h2>`);
 });
 books.click(() => {
     event.preventDefault();
     print.empty();
+    $('#print').append(`<h2 id="booksHeading">Books</h2>`);
     search.displaySearchBar();
+
 });
 favz.click(()=> {
     event.preventDefault();
     print.empty();
+    $('#print').append(`<h2 id="favzHeading">Favorites</h2>`);
+
     favzJS.getNewsFavs(user.getUser()).then((favData) => {
         console.log(favData);
         printdata.printNewsToFavs(favData);
