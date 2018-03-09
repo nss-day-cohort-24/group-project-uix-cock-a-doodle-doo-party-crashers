@@ -11,11 +11,28 @@ function getNewsFavs(user) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/news.json?orderBy="uid"&equalTo="${user}"`
     }).done((favData) => {
+      console.log('favData from getNews Favs', favData);
       return favData;
     });
   }
 
-module.exports = {getNewsFavs};  
+function getMeetupFavs(user) {
+  return $.ajax({
+    url: `${firebase.getFBsettings().databaseURL}/meetups.json?orderBy="uid"&equalTo="${user}"`
+  }).done((favData) => {
+    return favData;
+  });
+}
+
+function getBookFavs(user) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/books.json?orderBy="uid"&equalTo="${user}"`
+    }).done((favData) => {
+      return favData;
+    });
+}
+
+module.exports = {getNewsFavs, getMeetupFavs, getBookFavs};  
 
 // if (bttn.className === "delete") {
 //     let dCompare = bttnId.slice(7, 10);
