@@ -89,10 +89,11 @@ function buildBooks(limitedBooks){
         }
 
         // for (var i = 0; i < limitedBooks.length; i++) {
-        $('#print').append(`<button id="booksFavorite" class="${identifer}">Add to Favz</button>
-            <h2 class="book">${limitedBooks[i].title}</h2>
+        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>
             <h3>${limitedBooks[i].author_name}</h3>
-            <p>${limitedBooks[i].first_publish_year}</p>`);
+            <p>${limitedBooks[i].first_publish_year}</p>
+            <button id="booksFavorite" class="${identifer}">Add to Favz</button>
+            <hr>`);
         // }
 
         booksArray.push(
@@ -114,9 +115,8 @@ let printNewsToFavs = (favNewsData) => {
     let keys = Object.keys(favNewsData);
     keys.forEach(function(item){
         console.log(favNewsData[item].title);
-        $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
-        <button id="edit" class="newsFavoriteEdit"> Edit </button>
-        <a target="_blank" href="${favNewsData[item].url}">${favNewsData[item].title}</a></li>`);
+        $('#print').append(`<li><a target="_blank" href="${favNewsData[item].url}">${favNewsData[item].title}</a class="favedNewsTitle"><br><button id="delete" class="newsFavoriteDelete"> Delete </button>
+        <button id="edit" class="newsFavoriteEdit"> Edit </button></li>`);
     });
 };
 
@@ -141,11 +141,13 @@ let printBooksToFavs = (favBookData) => {
     let keys = Object.keys(favBookData);
     keys.forEach(function (item) {
         console.log(favBookData[item]);
-        $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
-        <button id="edit" class="newsFavoriteEdit"> Edit </button>
+        $('#print').append(`<li>
             <h2 class="book">${favBookData[item].title}</h2>
             <h3>${favBookData[item].author}</h3>
-            <p>${favBookData[item].published}</p>`);
+            <p>${favBookData[item].published}</p>
+            <button id="delete" class="newsFavoriteDelete"> Delete </button>
+            <button id="edit" class="newsFavoriteEdit"> Edit </button>
+            <hr>`);
     });
 };
 

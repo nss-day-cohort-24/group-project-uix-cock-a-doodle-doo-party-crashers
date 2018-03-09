@@ -40,6 +40,10 @@ h1 {
     margin: 0 0 0.4em 0;
 }
 
+.book {
+    margin: 0 0 -.5em 0;
+}
+
 .articleDescriptions {
     margin: 0.3em 0em 0 0em;
     font-size: 14px;
@@ -182,6 +186,7 @@ nav {
         width: 40vw;
     }
     #meetups,
+    
     #favz {
         background-color: $mediumgray;
         height: 12.5vh;
@@ -193,6 +198,10 @@ nav {
         color: $tan;
         text-decoration: none;
     }
+}
+
+.newsFavoriteDelete {
+    margin: 1em 0 0 0;
 }
 
 #weather {
@@ -272,7 +281,7 @@ nav {
     color: $tan;
     background-color: $darkgray;
     margin-left: -1.25vw;
-    width: 60vw;
+    width: 57.4vw;
     h1 {
         padding: 5px 0 5px 10px;
     }
