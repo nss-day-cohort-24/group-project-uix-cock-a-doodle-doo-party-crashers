@@ -10,12 +10,16 @@ let identifer;
 let meetupnum = 1;
 let newsnum = 1;
 let booksnum = 1;
+let meetupFavNum = 1;
 
 let meetupArray = [];
 let newsArray = [];
 let booksArray = [];
 
 function buildMeetup(event) {
+
+    $('#print').append(`<h2 id="meetupsHeading">Meetups</h2>`);
+
     for (let i = 0; i < 10; i++) {
         if (meetupnum < 10) {
             number = meetupnum.toString();
@@ -49,6 +53,7 @@ function buildMeetup(event) {
 }
 
 function buildNews(articles){
+    $('#print').append(`<h2 id="newsHeading">News</h2>`);
     for (var i = 0; i < 10; i++) {
         if (newsnum < 10) {
             number = newsnum.toString();
@@ -58,8 +63,8 @@ function buildNews(articles){
             identifer = "id_" + number;
         }
 
-        $('#print').append(`<li><button id="newsFavorite" class="${identifer}">Add to Favz</button>
-        <a target="_blank" href="${articles[i].url}">${articles[i].title}</a></li>`);
+        $('#print').append(`<li><a target="_blank" href="${articles[i].url}">${articles[i].title}</a>
+        <br><p class="articleDescriptions">${articles[i].description}</p><br><button id="newsFavorite" class="${identifer}">Add to Favz</button></li>`);
     
 
     newsArray.push(
@@ -73,6 +78,8 @@ function buildNews(articles){
     }
 }
 function buildBooks(limitedBooks){
+
+
     for (let i = 0; i < 10; i++) {
         if (booksnum < 10) {
             number = booksnum.toString();
@@ -83,10 +90,11 @@ function buildBooks(limitedBooks){
         }
 
         // for (var i = 0; i < limitedBooks.length; i++) {
-        $('#print').append(`<button id="booksFavorite" class="${identifer}">Add to Favz</button>
-            <h2 class="book">${limitedBooks[i].title}</h2>
+        $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>
             <h3>${limitedBooks[i].author_name}</h3>
-            <p>${limitedBooks[i].first_publish_year}</p>`);
+            <p>${limitedBooks[i].first_publish_year}</p>
+            <button id="booksFavorite" class="${identifer}">Add to Favz</button>
+            <hr>`);
         // }
 
         booksArray.push(
@@ -104,6 +112,7 @@ function buildBooks(limitedBooks){
 // Function to print to favorites 
 
 let printNewsToFavs = (favNewsData) => {
+
     // $('#print').empty();
     if(favNewsData != 'null'){
     Object.keys(favNewsData).forEach(function(item){
@@ -118,19 +127,25 @@ let printNewsToFavs = (favNewsData) => {
 };
 
 let printMeetupsToFavs = (favMeetupData) => {
+
     if(favMeetupData != "null"){
+
+    $('#print').append(`<div class="banner"><h1>Meetups</h1></div>`);
+
     let keys = Object.keys(favMeetupData);
-    console.log("keys", keys);
     keys.forEach(function (item) {
+
         // console.log(favMeetupData[item]);
         $('#print').append(`<li><button id=${item} class="meetupsFavoriteDelete"> Delete </button>
         <button id=${item} class="meetupsFavoriteEdit"> Edit </button>
-        <h2>${favMeetupData[item].name}</h2>
-        <h3>${favMeetupData[item].date}</h3>
-        <h3>${favMeetupData[item].time}</h3>
-        <p>${favMeetupData[item].venue}</p>
-        <p> ${favMeetupData[item].address}</p>
-        <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);
+
+//         <h2>${favMeetupData[item].name}</h2>
+//         <h3>${favMeetupData[item].date}</h3>
+//         <h3>${favMeetupData[item].time}</h3>
+//         <p>${favMeetupData[item].venue}</p>
+//         <p> ${favMeetupData[item].address}</p>
+//         <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);
+        
     });
 }else if(favMeetupData === "null"){
     $('#print').append('');
@@ -138,20 +153,31 @@ let printMeetupsToFavs = (favMeetupData) => {
 };
 
 let printBooksToFavs = (favBookData) => {
+
     if(favBookData != "null"){
+    $('#print').append(`<div class="banner"><h1>Books</h1></div>`);
+
     let keys = Object.keys(favBookData);
-    console.log("keys", keys);
     keys.forEach(function (item) {
+
         // console.log(favBookData[item]);
         $('#print').append(`<li><button id=${item} class="booksFavoriteDelete"> Delete </button>
         <button id=${item} class="booksFavoriteEdit"> Edit </button>
-            <h2 class="book">${favBookData[item].title}</h2>
-            <h3>${favBookData[item].author}</h3>
-            <p>${favBookData[item].published}</p>`);
+
+        console.log(favBookData[item]);
+        $('#print').append(`<li>
+
+//             <h2 class="book">${favBookData[item].title}</h2>
+//             <h3>${favBookData[item].author}</h3>
+//             <p>${favBookData[item].published}</p>
+//             <button id="delete" class="newsFavoriteDelete"> Delete </button>
+//             <button id="edit" class="newsFavoriteEdit"> Edit </button>
+//             <hr>`);
     });
 } else if (favBookData === "null"){
     $('#print').append('');
 }
 };
+
 
 module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray, printNewsToFavs, printMeetupsToFavs, printBooksToFavs};

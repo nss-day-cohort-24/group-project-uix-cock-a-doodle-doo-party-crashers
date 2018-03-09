@@ -32,25 +32,17 @@ function getBookFavs(user) {
     });
 }
 
-module.exports = {getNewsFavs, getMeetupFavs, getBookFavs};  
 
-// if (bttn.className === "delete") {
-//     let dCompare = bttnId.slice(7, 10);
+function editMeetupFav(favID, meetupObj) {
+  return $.ajax({
+    url: `${firebase.getFBsettings().databaseURL}/meetups/${favID}.json`,
+    type: "PUT",
+    data: JSON.stringify(meetupObj)
+  }).done((data) => {
+    return data;
+  });
+}
 
-//     let mCompare = ("textbubble_" + dCompare);
 
-//     let currentMsg = document.getElementById(mCompare);
-//     let msgContents = document.getElementById(mCompare).childNodes[0].childNodes[0].innerHTML;
+module.exports = {getNewsFavs, getMeetupFavs, getBookFavs, editMeetupFav};  
 
-//     currentMsg.innerHTML = "";
-
-//     let msgArray = cardMessagesJS.messages;
-
-//     let m = msgArray.indexOf(msgContents);
-
-//     cardMessagesJS.messages.splice(m, 1);
-//     document.getElementById(mCompare).removeAttribute("class");
-
-// }
-//     }
-// });    
