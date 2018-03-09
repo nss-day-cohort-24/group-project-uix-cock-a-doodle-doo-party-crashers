@@ -58,8 +58,8 @@ function buildNews(articles){
             identifer = "id_" + number;
         }
 
-        $('#print').append(`<li><button id="newsFavorite" class="${identifer}">Add to Favz</button>
-        <a target="_blank" href="${articles[i].url}">${articles[i].title}</a></li>`);
+        $('#print').append(`<li><a target="_blank" href="${articles[i].url}">${articles[i].title}</a>
+        <br><button id="newsFavorite" class="${identifer}">Add to Favz</button></li>`);
     
 
     newsArray.push(

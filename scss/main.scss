@@ -69,16 +69,23 @@ h1 {
 
 #logout {
     position: relative;
-    bottom: -10em;
-    left: 12em;
+    bottom: -23em;
+    left: 26em;
 }
 
 #prompt {
     display: inline;
     font-size: .6em;
     position: relative;
-    top: 9.5em;
-    left: 18.5em;
+    top: 24em;
+    left: 34.5em;
+}
+
+li > a {
+    color: #3b3738;
+    text-decoration: none;
+    font-size: 1.4em;
+    font-family: helvetica, sans-serif;
 }
 
 h2 {
@@ -102,7 +109,7 @@ p {
 
 li {
     list-style-type: none;
-}
+    padding: 0 0 2em 0;}
 
 a {
     color: $orange;
