@@ -11,7 +11,7 @@ let $ = require('jquery'),
 
 // Meetup firebase functions    
     function addMeetupFav(favFormObj) {
-        console.log("addSong", favFormObj);
+        // console.log("addSong", favFormObj);
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/meetups.json`,
           type: 'POST',
@@ -23,7 +23,7 @@ let $ = require('jquery'),
     }
 // News firebase functions
     function addNewsFav(favFormObj) {
-        console.log("addSong", favFormObj);
+        // console.log("addSong", favFormObj);
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/news.json`,
           type: 'POST',
@@ -34,26 +34,49 @@ let $ = require('jquery'),
        });
     }
 
+// Books firebase functions
+function addBooksFav(favFormObj) {
+    // console.log("addSong", favFormObj);
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/books.json`,
+      type: 'POST',
+      data: JSON.stringify(favFormObj),
+      dataType: 'json'
+   }).done((favID) => {
+      return favID;
+   });
+}
+
+
+// DELETE FUNCTIONS //
+
     function deleteNewsFav(favID) {
         return $.ajax({
-          url: `${firebase.getFBsettings().databaseURL}/news.json`,
+          url: `${firebase.getFBsettings().databaseURL}/news/${favID}.json`,
           method: 'DELETE'  
         }).done((favData) => {
             return favData;
         });
     }
-// Books firebase functions
-    function addBooksFav(favFormObj) {
-        console.log("addSong", favFormObj);
+
+    function deleteBooksFav(favID) {
         return $.ajax({
-          url: `${firebase.getFBsettings().databaseURL}/books.json`,
-          type: 'POST',
-          data: JSON.stringify(favFormObj),
-          dataType: 'json'
-       }).done((favID) => {
-          return favID;
-       });
+          url: `${firebase.getFBsettings().databaseURL}/books/${favID}.json`,
+          method: 'DELETE'  
+        }).done((favData) => {
+            return favData;
+        });
     }
+
+    function deleteMeetupsFav(favID) {
+        return $.ajax({
+          url: `${firebase.getFBsettings().databaseURL}/meetups/${favID}.json`,
+          method: 'DELETE'  
+        }).done((favData) => {
+            return favData;
+        });
+    }
+
 
 
 module.exports = {addMeetupFav, addNewsFav, addBooksFav, deleteNewsFav};
