@@ -62,18 +62,25 @@ function buildNews(articles){
             number = newsnum.toString();
             identifer = "id_" + number;
         }
+        newsArray.push(
+            {
+                id: identifer,
+                title: articles[i].title,
+                url: articles[i].url,
+                uid: getUser() 
+            });
 
         $('#print').append(`<li><a target="_blank" href="${articles[i].url}">${articles[i].title}</a>
         <br><p class="articleDescriptions">${articles[i].description}</p><br><button id="newsFavorite" class="${identifer}">Add to Favz</button></li>`);
     
 
-    newsArray.push(
-        {
-            id: identifer,
-            title: articles[i].title,
-            url: articles[i].url,
-            uid: getUser() 
-        });
+    // newsArray.push(
+    //     {
+    //         id: identifer,
+    //         title: articles[i].title,
+    //         url: articles[i].url,
+    //         uid: getUser() 
+    //     });
         newsnum = newsnum + 1;
     }
 }
@@ -89,13 +96,12 @@ function buildBooks(limitedBooks){
             identifer = "id_" + number;
         }
 
-        // for (var i = 0; i < limitedBooks.length; i++) {
         $('#print').append(`<h2 class="book">${limitedBooks[i].title}</h2>
             <h3>${limitedBooks[i].author_name}</h3>
             <p>${limitedBooks[i].first_publish_year}</p>
             <button id="booksFavorite" class="${identifer}">Add to Favz</button>
             <hr>`);
-        // }
+
 
         booksArray.push(
             {
@@ -112,71 +118,46 @@ function buildBooks(limitedBooks){
 // Function to print to favorites 
 
 let printNewsToFavs = (favNewsData) => {
-
-    // $('#print').empty();
-    if(favNewsData != 'null'){
+    $('#print').append(`<div class="banner"><h1>News</h1></div>`);
     Object.keys(favNewsData).forEach(function(item){
-        // console.log("printNewsToFavs", favNewsData);
+        console.log("printNewsToFavs", favNewsData);
         $('#print').append(`<li><button id="${item}" class="newsFavoriteDelete"> Delete </button>
         <button id=${item} class="newsFavoriteEdit"> Edit </button>
         <a target="_blank" href="${favNewsData[item].url}">${favNewsData[item].title}</a></li>`);
     });
-}else if(favNewsData === "null"){
-    $('#print').append('');
-}
 };
 
 let printMeetupsToFavs = (favMeetupData) => {
-
-    if(favMeetupData != "null"){
-
     $('#print').append(`<div class="banner"><h1>Meetups</h1></div>`);
-
     let keys = Object.keys(favMeetupData);
     keys.forEach(function (item) {
-
-        // console.log(favMeetupData[item]);
+        console.log(favMeetupData[item]);
         $('#print').append(`<li><button id=${item} class="meetupsFavoriteDelete"> Delete </button>
         <button id=${item} class="meetupsFavoriteEdit"> Edit </button>
-
-//         <h2>${favMeetupData[item].name}</h2>
-//         <h3>${favMeetupData[item].date}</h3>
-//         <h3>${favMeetupData[item].time}</h3>
-//         <p>${favMeetupData[item].venue}</p>
-//         <p> ${favMeetupData[item].address}</p>
-//         <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);
-        
+         <h2>${favMeetupData[item].name}</h2>
+         <h3>${favMeetupData[item].date}</h3>
+         <h3>${favMeetupData[item].time}</h3>
+         <p>${favMeetupData[item].venue}</p>
+         <p> ${favMeetupData[item].address}</p>
+         <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);        
     });
-}else if(favMeetupData === "null"){
-    $('#print').append('');
-}
 };
 
 let printBooksToFavs = (favBookData) => {
-
-    if(favBookData != "null"){
+    console.log("favBookData is NOT equal to null");
     $('#print').append(`<div class="banner"><h1>Books</h1></div>`);
 
     let keys = Object.keys(favBookData);
     keys.forEach(function (item) {
 
-        // console.log(favBookData[item]);
+        console.log(favBookData[item]);
         $('#print').append(`<li><button id=${item} class="booksFavoriteDelete"> Delete </button>
         <button id=${item} class="booksFavoriteEdit"> Edit </button>
-
-        console.log(favBookData[item]);
-        $('#print').append(`<li>
-
-//             <h2 class="book">${favBookData[item].title}</h2>
-//             <h3>${favBookData[item].author}</h3>
-//             <p>${favBookData[item].published}</p>
-//             <button id="delete" class="newsFavoriteDelete"> Delete </button>
-//             <button id="edit" class="newsFavoriteEdit"> Edit </button>
-//             <hr>`);
+            <h2 class="book">${favBookData[item].title}</h2>
+            <h3>${favBookData[item].author}</h3>
+            <p>${favBookData[item].published}</p>
+            <hr>`);
     });
-} else if (favBookData === "null"){
-    $('#print').append('');
-}
 };
 
 

@@ -24,10 +24,14 @@ var newsFavz = $("newsFavz");
 
 // Event listeners
 $(document).ready(() => {
-    printJS.printNews();
+    user.getUser();
+    $('#print').append(`<img src="images/heyhey.jpg">`);
 });
 
 document.body.addEventListener('click', check);
+
+
+// DELETE FAVORITE 
 
 function check(event){
     event.preventDefault();
@@ -36,58 +40,83 @@ function check(event){
         console.log(event.target.id);
         interaction.deleteNewsFav(event.target.id)
         .then(() => {
-            favzJS.getNewsFavs(user.getUser())
-            .then((favData)=> {
-                $('#print').empty();
+            console.log();
+            print.empty('');
+            favzJS.getNewsFavs(user.getUser()).then((favData) => {
+                console.log(favData);
                 printdata.printNewsToFavs(favData);
-                printdata.printBooksToFavs(favData);
-                printdata.printMeetupsToFavs(favData);
-            });
         });
-    }
-    if(event.target.className === "booksFavoriteDelete"){
-        console.log('booksFavoriteDelete clicked');
-        console.log(event.target.id);
-        interaction.deleteBooksFav(event.target.id)
-        .then(() => {
-            favzJS.getBookFavs(user.getUser())
-            .then((favData)=> {
-                $('#print').empty();
-                printdata.printNewsToFavs(favData);
-                printdata.printBooksToFavs(favData);
-                printdata.printMeetupsToFavs(favData);
-            });
+        favzJS.getMeetupFavs(user.getUser()).then((favData) => {
+            console.log(favData);
+            printdata.printMeetupsToFavs(favData);
         });
-    }
-    if(event.target.className === "meetupsFavoriteDelete"){
-        console.log('meetupsFavoriteDelete clicked');
-        console.log(event.target.id);
-        interaction.deleteMeetupsFav(event.target.id)
-        .then(() => {
-            favzJS.getMeetupsFavs(user.getUser())
-            .then((favData)=> {
-                $('#print').empty();
-                printdata.printNewsToFavs(favData);
-                printdata.printBooksToFavs(favData);
-                printdata.printMeetupsToFavs(favData);
-            });
+        favzJS.getBookFavs(user.getUser()).then((favData) => {
+            console.log(favData);
+            printdata.printBooksToFavs(favData);
         });
-    }
+    });
+} else if(event.target.className === "booksFavoriteDelete"){
+    console.log('booksFavoriteDelete clicked');
+    console.log(event.target.id);
+    interaction.deleteBooksFav(event.target.id)
+    .then(() => {
+        console.log();
+        print.empty('');
+        favzJS.getNewsFavs(user.getUser()).then((favData) => {
+            console.log(favData);
+            printdata.printNewsToFavs(favData);
+    });
+    favzJS.getMeetupFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printMeetupsToFavs(favData);
+    });
+    favzJS.getBookFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printBooksToFavs(favData);
+    });
+});
+}else if(event.target.className === "meetupsFavoriteDelete"){
+    console.log('meetupsFavoriteDelete clicked');
+    console.log(event.target.id);
+    interaction.deleteMeetupsFav(event.target.id)
+    .then(() => {
+        console.log();
+        print.empty('');
+        favzJS.getNewsFavs(user.getUser()).then((favData) => {
+            console.log(favData);
+            printdata.printNewsToFavs(favData);
+    });
+    favzJS.getMeetupFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printMeetupsToFavs(favData);
+    });
+    favzJS.getBookFavs(user.getUser()).then((favData) => {
+        console.log(favData);
+        printdata.printBooksToFavs(favData);
+    });
+});
+}
 }
 
+
+// DELETE MEETUPS 
+
 news.click(() => {    
+    console.log('news trying to print');
     event.preventDefault();
     print.empty();
     printJS.printNews();
     
 });
 meetups.click(() => {
+    console.log('meetups trying to print');
     event.preventDefault();
     print.empty();
     printJS.printMeetups();
     $('#print').append(`<h2 id="meetupsHeading">Meetups</h2>`);
 });
 books.click(() => {
+    console.log('books trying to print');
     event.preventDefault();
     print.empty();
     $('#print').append(`<h2 id="booksHeading">Books</h2>`);
@@ -95,6 +124,7 @@ books.click(() => {
 
 });
 favz.click(()=> {
+    console.log('favs trying to print');
     event.preventDefault();
     print.empty();
     $('#print').append(`<h2 id="favzHeading">Favorites</h2>`);

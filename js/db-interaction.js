@@ -51,6 +51,7 @@ function addBooksFav(favFormObj) {
 // DELETE FUNCTIONS //
 
     function deleteNewsFav(favID) {
+        console.log("ID for deleteNewsFavorite}", favID);
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/news/${favID}.json`,
           method: 'DELETE'  
@@ -79,4 +80,4 @@ function addBooksFav(favFormObj) {
 
 
 
-module.exports = {addMeetupFav, addNewsFav, addBooksFav, deleteNewsFav};
+module.exports = {addMeetupFav, addNewsFav, addBooksFav, deleteNewsFav, deleteBooksFav, deleteMeetupsFav};
