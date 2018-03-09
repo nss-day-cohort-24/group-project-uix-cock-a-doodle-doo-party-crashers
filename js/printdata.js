@@ -16,6 +16,9 @@ let newsArray = [];
 let booksArray = [];
 
 function buildMeetup(event) {
+
+    $('#print').append(`<h2 id="meetupsHeading">Meetups</h2>`);
+
     for (let i = 0; i < 10; i++) {
         if (meetupnum < 10) {
             number = meetupnum.toString();
@@ -49,6 +52,7 @@ function buildMeetup(event) {
 }
 
 function buildNews(articles){
+    $('#print').append(`<h2 id="newsHeading">News</h2>`);
     for (var i = 0; i < 10; i++) {
         if (newsnum < 10) {
             number = newsnum.toString();
@@ -59,7 +63,7 @@ function buildNews(articles){
         }
 
         $('#print').append(`<li><a target="_blank" href="${articles[i].url}">${articles[i].title}</a>
-        <br><button id="newsFavorite" class="${identifer}">Add to Favz</button></li>`);
+        <br><p class="articleDescriptions">${articles[i].description}</p><br><button id="newsFavorite" class="${identifer}">Add to Favz</button></li>`);
     
 
     newsArray.push(
@@ -73,6 +77,8 @@ function buildNews(articles){
     }
 }
 function buildBooks(limitedBooks){
+
+
     for (let i = 0; i < 10; i++) {
         if (booksnum < 10) {
             number = booksnum.toString();

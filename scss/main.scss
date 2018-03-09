@@ -30,6 +30,21 @@ h1 {
 //     top: 91px;
 // }
 
+#newsHeading, #meetupsHeading, #favzHeading {
+    font-size: 58px;
+    margin: 0em 0 0.4em 0;
+}
+
+#booksHeading {
+    font-size: 58px;
+    margin: 0 0 0.4em 0;
+}
+
+.articleDescriptions {
+    margin: 0.3em 0em 0 0em;
+    font-size: 14px;
+}
+
 #greeting p {
     font-size: 2em;
     margin: 0em 0 0 0;
@@ -49,7 +64,7 @@ h1 {
 #sunIcon {
     width: 9em;
     position: absolute;
-    top: 95px;
+    top: 124px;
     right: 240px;
 }
 
@@ -69,7 +84,7 @@ h1 {
 
 #logout {
     position: relative;
-    bottom: -23em;
+    bottom: -20em;
     left: 26em;
 }
 
@@ -77,15 +92,16 @@ h1 {
     display: inline;
     font-size: .6em;
     position: relative;
-    top: 24em;
+    top: 21em;
     left: 34.5em;
 }
 
 li > a {
-    color: #3b3738;
+    color: #eb7019;
     text-decoration: none;
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-family: helvetica, sans-serif;
+    font-weight: 300;
 }
 
 h2 {
@@ -191,22 +207,32 @@ nav {
     border: solid black 1px;
 }
 
+#greeting p {
+    font-size: 2em;
+    margin: 0em 0 0em 0.3em;
+    font-weight: bold;
+    color: #3B3737;
+    text-align: left;
+    width: 85%;
+}
+
 #todaysCurrentTemp {
     font-size: 8em;
     font-weight: 600;
     margin: -50% 0 0 47%;
     position: absolute;
     right: 27px;
-    top: 312px;
-    // border: solid;
+    top: 327px;
 }
 
 #todaysDate {
     position: relative;
-    top: 91px;
-    font-size: 1.1em;
-    margin: -6% 0 5% 49%;
-    right: 11px;
+    top: 31px;
+    font-size: 18px;
+    margin: -6% 0% 5% 49%;
+    right: 25px;
+    width: 12em;
+    font-weight: 100;
 }
 
 #todaysWeather {
@@ -239,6 +265,7 @@ nav {
 #print {
     position: absolute;
     left: 42vw;
+    padding: 0 0 0 1.2em;
 }
 
 .banner {

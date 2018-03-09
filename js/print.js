@@ -48,6 +48,10 @@ function weatherAPI(file) {
 // console.log("this is  atestttt");
 
 var zipCode = "37205";
+// Detroit ZIP: 48127
+// LA ZIP: 90001
+
+
 
 weatherAPI("http://api.openweathermap.org/data/2.5/weather?zip="+zipCode+",us&appid=59532cc55fafea3eb5fddb6e600206b8")
     .then((data) => {
@@ -146,7 +150,7 @@ function printWeatherToDom(data) {
 
         let weatherDiv = document.getElementById("weather");
         
-        weatherDiv.innerHTML = `<section id="greeting"><p>Good Morning, Patrick.</p></section>`;
+        weatherDiv.innerHTML = `<section id="greeting"><p id="goodMorning">Good Morning, Patrick.</p></section>`;
         weatherDiv.innerHTML += `<section id="todaysDate">Today is ${dateAndTime}</section>`; // Prints the Date
         weatherDiv.innerHTML += `<img src=${currentWeatherImg} id=${currentWeatherID}>`;    // Prints the weather icon
         weatherDiv.innerHTML += `<section id="todaysCurrentTemp">${currentTempFarenheit}°</section>`; // Prints current Temp
@@ -165,6 +169,7 @@ $(document).click(function(){
         console.log("test");
         user.logOut();
         user.logInGoogle();
+        console.log("running?");
     }
 });
 
