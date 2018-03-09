@@ -10,6 +10,7 @@ let identifer;
 let meetupnum = 1;
 let newsnum = 1;
 let booksnum = 1;
+let meetupFavNum = 1;
 
 let meetupArray = [];
 let newsArray = [];
@@ -124,15 +125,17 @@ let printMeetupsToFavs = (favMeetupData) => {
     $('#print').append(`<div class="banner"><h1>Meetups</h1></div>`);
     let keys = Object.keys(favMeetupData);
     keys.forEach(function (item) {
-        console.log(favMeetupData[item]);
+        console.log("what up bitch", favMeetupData[item]);
+
         $('#print').append(`<li><button id="delete" class="newsFavoriteDelete"> Delete </button>
-        <button id="edit" class="newsFavoriteEdit"> Edit </button>
+        <button id="${item}" class="meetupFavoriteEdit"> Edit </button>
         <h2>${favMeetupData[item].name}</h2>
         <h3>${favMeetupData[item].date}</h3>
         <h3>${favMeetupData[item].time}</h3>
         <p>${favMeetupData[item].venue}</p>
         <p> ${favMeetupData[item].address}</p>
         <br><a target="_blank" href="${favMeetupData[item].link}">learn more</a></li>`);
+        
     });
 };
 
@@ -150,5 +153,6 @@ let printBooksToFavs = (favBookData) => {
             <hr>`);
     });
 };
+
 
 module.exports = { buildMeetup, meetupArray, buildNews, newsArray, buildBooks, booksArray, printNewsToFavs, printMeetupsToFavs, printBooksToFavs};
